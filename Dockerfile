@@ -13,4 +13,4 @@ RUN git clone --depth 1 https://github.com/sstephenson/rbenv.git ~/.rbenv \
   && source /etc/profile.d/rbenv.sh \
   && echo 'gem: --no-rdoc --no-ri' > ~/.gemrc
 
-RUN bash -lc 'for v in 2.3.0; do rbenv install $v; rbenv global $v; gem install bundler; done'
+RUN bash -lc 'cd ~/.rbenv/plugins/ruby-build && git pull && for v in 2.3.0 2.4.1; do rbenv install $v; rbenv global $v; gem install bundler; done && rbenv rehash; '
